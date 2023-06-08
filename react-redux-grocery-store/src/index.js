@@ -5,12 +5,14 @@ import {Provider} from 'react-redux';
 import './index.css';
 import App from './App';
 import configureStore from './store';
+import { populateProduce } from './store/produce';
 
 const store = configureStore();
 
 function Root() {
   if (process.env.NODE_ENV !== "production") {
     window.store = store;
+    window.populateProduce = populateProduce;
   }
   return (
     <Provider store={store}>
